@@ -74,3 +74,49 @@ elemPresence =
     1 `elem` example
   ]
 
+-- Texas Ranges
+
+numRange = [1..20]
+charRange = ['a'..'h']
+twoRange = [2,4..20]
+threeRange = [3,6..20]
+reverseRange = [20,19..1]
+thirteenMultiples = take 24 [13,26..]
+cycle123 = take 10 (cycle [1,2,3])
+lolCycle = take 11 (cycle "LOL ")
+sameNumber = take 12 (repeat 4)
+replicateNumber = replicate 5 25
+
+-- List Comprehension
+
+twoComprehension = [x*2 | x <- [1..10]]
+twoComprehension' = [x*2 | x <- [1..10], x*2 >= 12]
+mod7is3Comprehension = [ x | x <- [50..100], x `mod` 7 == 3]
+boomBangs xs = [ if x < 10 then "BOOM!" else "BANG!" | x <- xs, odd x]
+
+excludeCommprehension = [ x | x <- [1..20], x /= 13, x /= 15, x /= 17]
+cartesianComprehension = [ x*y | x <- [1..4], y <- [2..5]]
+cartesianComprehension' = [ x*y | x <- [1..4], y <- [2..5], x*y > 10]
+
+funnyAdjectives = ["lazy", "stupid", "creepy"]
+funnyNames = ["hobo", "fuck", "derp"]
+usernameComprehension = [adj ++ " " ++ name | adj <- funnyAdjectives, name <- funnyNames]
+
+length' xs = sum [1 | _ <- xs]
+removeNonUppercase str = [ c | c <- str, c `elem` ['A'..'Z']]
+removeNestedOdds xs = [ [ n | n <- nested, odd n ] | nested <- xs]
+
+-- Tuples
+
+pointTuples = [(0,0), (1,0), (3,2)]
+peopleTuples = [("Christopher", "Walken", 46), ("Ju", "Liu", 26)]
+myTuple = (1,2)
+firstEl = fst myTuple
+secondEl = snd myTuple
+zippedElems = zip [1,2,3,4,5] [6,7,8,9,10]
+infiniteZip = zip ["foo", "bar", "sausage"] [1..]
+
+allTriangles = [ (a,b,c) | a <- [1..10], b <- [1..10], c <- [1..10]]
+rightTriangles = [ (a,b,c) | a <- [1..10], b <- [1..10], c <- [1..10], a^2 + b^2 == c^2]
+rightTriangles' = [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2 + b^2 == c^2]
+rightTriangles'' = [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2 + b^2 == c^2, a+b+c == 24 ]
